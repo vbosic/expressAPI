@@ -1,11 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const requireAuth = require("../middlewares/requireAuth");
 
 const Track = mongoose.model("Track");
 
 const router = express.Router();
-
+router.use(cors());
 router.use(requireAuth);
 
 router.get("/tracks", async (req, res) => {
