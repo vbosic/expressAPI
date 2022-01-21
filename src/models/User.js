@@ -11,6 +11,21 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  name: {
+    type: String,
+    required: true,
+  },
+  date_joined: {
+    type: Date,
+  },
+  is_active: {
+    type: Boolean,
+    default: true,
+  },
+  hours: {
+    type: Number,
+    default: 0,
+  },
 });
 
 userSchema.pre("save", function (next) {

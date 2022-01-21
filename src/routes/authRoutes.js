@@ -7,9 +7,9 @@ const cors = require("cors");
 const router = express.Router();
 router.use(cors());
 router.post("/signup", async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, name } = req.body;
   try {
-    const user = new User({ email, password });
+    const user = new User({ email, password, name, date_joined: Date.now() });
     await user.save();
     const token = jwt.sign({ userId: user._id }, "MY_SECRET_KEY");
     res.send({ token });
